@@ -1,0 +1,19 @@
+runtime: php55
+api_version: 1
+threadsafe: true
+env_variables:
+  ENV: testing
+  MYSQL_DSN: mysql:unix_socket=[your_cloud_sql_connection_name];dbname=[your_database_name]
+  MYSQL_USER: [username]
+  MYSQL_PASSWORD: [passwrod]
+  HOME_URL: https://[project-id].appspot.com
+  MERCHANT_ID: [ecpay_merchant_id]
+  HASH_KEY: [ecpay_hash_key]
+  HASH_IV: [ecpay_hash_iv]
+handlers:
+- url: /ecpay_payment
+  script: ecpay_payment.php
+- url: /ecpay_payment_receive
+  script: ecpay_payment_receive.php
+- url: /ecpay_payment_cvs_map
+  script: ecpay_payment_cvs_map.php
